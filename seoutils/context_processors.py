@@ -1,7 +1,7 @@
-from seoutils.utils import get_meta_for_url
+from seoutils.utils import get_meta_for_request
 
 def meta(request):
-    meta = get_meta_for_url(request.META['PATH_INFO'])
+    meta = get_meta_for_request(request)
     if meta:
         return { 'meta': meta }
     else:
