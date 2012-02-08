@@ -1,19 +1,19 @@
 from django.core.urlresolvers import reverse, resolve
 from django.template import RequestContext
+
 from webcore.contrib.frontadmin.plugins import PluginBase
+from seoutils.utils import get_meta_for_request
 
 class Plugin(PluginBase):
 
     def get_context(self):
-        context = RequestContext(self.request)
+        # TODO: here we should use the context to resolve the meta object
+        # instead of hitting the database again
+        # print RequestContext(self.request)
+        meta = get_meta_for_request(self.request)
         url_name = resolve(self.request.get_full_path()).url_name
-        if 'meta' in context:
-            meta = context['meta']
-
-            if not meta.exists(self.request):
-                url = reverse('admin:seoutils_meta_add') + '?inject=id_path_info&value='+ url_name
-            else:
-                url = reverse('admin:seoutils_meta_change', args=[meta.pk])
+        if meta:
+            url = reverse('admin:seoutils_meta_change', args=[meta.pk])
         else:
             url = reverse('admin:seoutils_meta_add') + '?inject=id_path_info&value='+ url_name
 
