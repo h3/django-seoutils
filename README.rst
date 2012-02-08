@@ -45,13 +45,8 @@ Using template tags
 For a more flexible approach, you can also use a template tag to retrieve a `Meta` object for a 
 specific page like this::
     
-    {% seometa_for_url request.META.PATH_INFO as meta %}
+    {% load seoutils_tags %}
+    {% seometa request as meta %}
     <title>{{ meta.title }}</title>
     <meta name="description" content="{{ meta.desc }}">
     <meta name="keywords" content="{{ meta.keywords }}">
-
-Or like this::
-
-    <title>{% seometa_for_url request.META.PATH_INFO title %}</title>
-    <meta name="description" content="{% seometa_for_url request.META.PATH_INFO desc %}">
-    <meta name="keywords" content="{% seometa_for_url request.META.PATH_INFO keywords %}">
