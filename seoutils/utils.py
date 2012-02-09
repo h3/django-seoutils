@@ -38,7 +38,10 @@ def get_meta(**kwargs):
 
 
 def get_meta_for_request(request, default=False):
-    url = resolve(request.META['PATH_INFO'])
+    try:
+        url = resolve(request.META['PATH_INFO'])
+    except:
+        return None
     meta = get_meta(
             path_info=request.META['PATH_INFO'],
             url_name=url.url_name,
