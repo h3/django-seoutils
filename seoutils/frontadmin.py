@@ -10,6 +10,12 @@ class Plugin(PluginBase):
         # TODO: here we should use the context to resolve the meta object
         # instead of hitting the database again
         # print RequestContext(self.request)
+
+        if not self.request.user.has_perm("seoutils.add_meta") or \
+           not self.request.user.has_perm("seoutils.change_meta") or \
+           not self.request.user.has_perm("seoutils.delete_meta"):
+               return ''
+
         meta = get_meta_for_request(self.request)
         url_name = resolve(self.request.META['PATH_INFO']).url_name
         if meta:
