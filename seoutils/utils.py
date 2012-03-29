@@ -5,7 +5,7 @@ from seoutils.models import Meta
 def get_default_meta():
     try:
         un = resolve('/').url_name
-        return get_meta(url_name=un, path_info='/')
+        return get_meta(url_name=un, path_info='/', fallback=False)
     except:
         return None
 
@@ -19,10 +19,11 @@ def get_meta(**kwargs):
                 meta = Meta.objects.get(path_info=kwargs.get(arg))
             except Meta.DoesNotExist:
                 pass
+
     # Here we use the root url title/keywords/description
     # if they are blank in this meta, not that the meta is
     # not saved intentionnaly. Yes, it's ugly as fuck.
-    if meta and meta.path_info != '/':
+    if meta and not kwargs.get('fallback', False) is False:
         if meta.keywords is None or meta.keywords == '' \
             or meta.title is None or meta.title == '' \
             or meta.desc is None or meta.desc == '':
