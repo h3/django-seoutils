@@ -17,7 +17,7 @@ class Plugin(PluginBase):
         # instead of hitting the database again
         # print RequestContext(self.request)
 
-        if not self.request.user.has_perm("seoutils.add_meta") or \
+        if isinstance(self.request, str) or not self.request.user.has_perm("seoutils.add_meta") or \
            not self.request.user.has_perm("seoutils.change_meta") or \
            not self.request.user.has_perm("seoutils.delete_meta"):
                return ''
