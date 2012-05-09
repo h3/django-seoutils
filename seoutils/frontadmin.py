@@ -1,8 +1,14 @@
 from django.core.urlresolvers import reverse, resolve
 from django.template import RequestContext
+from django.conf import settings
 
-from webcore.contrib.frontadmin.plugins import PluginBase
 from seoutils.utils import get_meta_for_request
+
+if 'frontadmin' in settings.INSTALLED_APPS:
+    from frontadmin.plugins import PluginBase
+elif 'webcore.contrib.frontadmin':
+    # DEPRECATED
+    from webcore.contrib.frontadmin.plugins import PluginBase
 
 class Plugin(PluginBase):
 
