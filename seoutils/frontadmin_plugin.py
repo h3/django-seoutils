@@ -1,4 +1,5 @@
 from django.core.urlresolvers import reverse, resolve
+from django.core.urlresolvers import Resolver404
 from django.template import RequestContext
 from django.conf import settings
 
@@ -23,7 +24,12 @@ class Plugin(PluginBase):
                return ''
 
         meta = get_meta_for_request(self.request)
-        url_name = resolve(self.request.META['PATH_INFO']).url_name
+
+        try:
+            url_name = resolve(self.request.META['PATH_INFO']).url_name
+        except Resolver404:
+            return ''
+
         if meta:
             url = reverse('admin:seoutils_meta_change', args=[meta.pk])
         else:
