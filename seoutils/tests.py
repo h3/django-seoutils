@@ -9,9 +9,6 @@ from django.core.urlresolvers import resolve, reverse, NoReverseMatch
 from seoutils.models import Meta
 from seoutils.utils import get_meta_for_request
 
-from django.test import Client
-from django.core.handlers.wsgi import WSGIRequest
-
 
 class DummyRequest(object):
     def __init__(self, path_info='/'):
@@ -22,6 +19,7 @@ class DummyRequest(object):
         return {
             'PATH_INFO': self.path_info
         }
+
 
 class SeoUtilsTestBase(TestCase):
     urls = 'seoutils.testurls'
@@ -40,6 +38,7 @@ class SeoUtilsTestBase(TestCase):
             'keywords': keywords,
             'extra_js': extra_js,
         }
+
 
 class SeoUtilsTest(SeoUtilsTestBase):
     """Basic tests for the seoutils application."""
