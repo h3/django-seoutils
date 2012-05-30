@@ -1,4 +1,4 @@
-from django.core.urlresolvers import resolve
+from django.core.urlresolvers import resolve, reverse, NoReverseMatch
 from seoutils.models import Meta
 
 
@@ -23,7 +23,7 @@ def get_meta(**kwargs):
     # Here we use the root url title/keywords/description
     # if they are blank in this meta, not that the meta is
     # not saved intentionnaly. Yes, it's ugly as fuck.
-    if meta and not kwargs.get('fallback', False) is False:
+    if meta and not kwargs.get('fallback', True) is False:
         if meta.keywords is None or meta.keywords == '' \
             or meta.title is None or meta.title == '' \
             or meta.desc is None or meta.desc == '':
@@ -47,10 +47,14 @@ def get_meta_for_request(request, default=False):
             path_info=request.META['PATH_INFO'],
             url_name=url.url_name,
             view_name=url.view_name)
+
     if meta is None:
-        if default:
-            return get_default_meta()
-        else:
+        try:
+            if reverse(url.url_name) != '/':
+                return get_default_meta()
+            else:
+                return None
+        except NoReverseMatch:
             return None
-    else:
-        return meta
+
+    return meta
