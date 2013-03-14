@@ -7,8 +7,8 @@ A simple django app to manage SEO related data with the admin.
 Installation
 ------------
 
- 1. In your `settings.py` Add `seoutils` to your `INSTALLED_APPS`.
- 2. Sync your database
+1. In your `settings.py`, add `seoutils` to your `INSTALLED_APPS`.
+2. Sync your database
 
 From there you will have a new app called `Seoutils` in the admin. Start by adding a `Meta` 
 for the root page of your site. The URL will of course be `/` and the other fields are what
