@@ -20,7 +20,9 @@ the Meta for the root page.
 
 The JavaScript field is optional. It is meant to be used in special cases where you need to
 add SEO specific scripts like campaign tracking code and such. You will need to declare it
-in your template like this::
+in your template like this:
+
+.. code-block:: django
 
     {{ meta.extra_js|safe }}
 
@@ -33,7 +35,9 @@ This is the recommanded way to use `seoutils`.
 In your `settings.py` add `seoutils.context_processors.meta` to your `TEMPLATE_CONTEXT_PROCESSORS`.
 
 Then in your template you will have a `meta` variable which is a `Meta` instance. So you can use it
-like this::
+like this:
+
+.. code-block:: django
 
     <title>{{ meta.title }}</title>
     <meta name="description" content="{{ meta.desc }}">
@@ -43,7 +47,9 @@ Using template tags
 -------------------
 
 For a more flexible approach, you can also use a template tag to retrieve a `Meta` object for a 
-specific page like this::
+specific page like this:
+
+.. code-block:: django
     
     {% load seoutils_tags %}
     {% seometa request as meta %}
