@@ -9,7 +9,10 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding index on 'VirtualFile', fields ['url']
-        db.create_index('seoutils_virtualfile', ['url'])
+        try:
+            db.create_index('seoutils_virtualfile', ['url'])
+        except:
+            pass
 
     def backwards(self, orm):
         # Removing index on 'VirtualFile', fields ['url']

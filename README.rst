@@ -77,6 +77,20 @@ URLs of your project, it will search for matching Virtual Files URLs and return 
 
 Now you can use the admin to add new Virtual Files.
 
+
+Using Analytics
+---------------
+
+Analytics is basically just an app were you put your Analytic code snippet and then render it (or them)
+like so:
+
+.. code-block:: django
+
+    {% load seoutils_tags %}
+    {% get_analytics as analytics %}
+    {{ analytics }}
+
+
 Credits
 =======
 
