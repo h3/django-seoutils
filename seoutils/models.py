@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 
+import re
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
 class Meta(models.Model):
     path_info = models.CharField(_('URL of the page'), max_length=250,
-            unique=True, help_text=_('This can be a URL or a URL name. \
-Ex.: "/contact/" or "website-contact"'))
+            unique=True, db_index=True, help_text=_('This can be a URL or a \
+URL name. Ex.: "/contact/" or "website-contact"'))
 
     title = models.CharField(_('Page title'), max_length=250, blank=True,
             null=True, help_text=_('A page title. It will show up in search \
@@ -37,8 +39,18 @@ class Analytic(models.Model):
 reference.'))
     is_active = models.BooleanField(_('Is active'), default=True)
 
+    def __unicode__(self):
+        regex = re.compile("('UA-.*')")
+        try:
+            return regex.findall(self.code)[0].replace("'", '')
+        except:
+            return _('Unknown analytic code')
+
 
 class VirtualFile(models.Model):
-    url = models.CharField(_('URL'), max_length=250)
+    url = models.CharField(_('URL'), max_length=250, unique=True, db_index=True)
     content = models.TextField(_('File content'))
     is_active = models.BooleanField(_('Is active'), default=True)
+
+    def __unicode__(self):
+        return self.url

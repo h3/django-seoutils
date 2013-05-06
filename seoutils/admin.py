@@ -3,11 +3,7 @@
 from django.contrib import admin
 from django.conf import settings
 
-from seoutils.models import Meta
-
-#class PageMetaAdmin(admin.ModelAdmin):
-#    list_display   = ('site_url', 'title', 'keywords', 'desc',)
-#admin.site.register(PageMeta, PageMetaAdmin)
+from seoutils.models import Meta, Analytic, VirtualFile
 
 if 'modeltranslation' in settings.INSTALLED_APPS:
     try:
@@ -22,8 +18,20 @@ if 'modeltranslation' in settings.INSTALLED_APPS:
 else:
     BaseAdmin = admin.ModelAdmin
 
-class MetaAdmin(BaseAdmin):
-    list_display   = ('path_info', 'title', 'keywords', 'desc',)
-    search_fields = ('path_info', 'title', 'keywords', 'desc')
 
+class MetaAdmin(BaseAdmin):
+    list_display = ('path_info', 'title', 'keywords', 'desc',)
+    search_fields = ('path_info', 'title', 'keywords', 'desc')
 admin.site.register(Meta, MetaAdmin)
+
+
+class AnalyticAdmin(admin.ModelAdmin):
+    list_display = ('__unicode__', 'description', 'is_active',)
+    search_fields = ('code', 'description',)
+    list_filters = ('is_active',)
+admin.site.register(Analytic, AnalyticAdmin)
+
+class VirtualFileAdmin(admin.ModelAdmin):
+    list_display = ('url', 'is_active')
+    search_fields = ('url', 'content')
+admin.site.register(VirtualFile, VirtualFileAdmin)
