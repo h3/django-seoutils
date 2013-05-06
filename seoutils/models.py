@@ -30,9 +30,15 @@ campaign tracking code (script tags must be included).'))
 
 
 class Analytic(models.Model):
-    is_active = models.BooleanField(_('Is active'), default=True)
     code = models.TextField(_('Code JavaScript'))
     description = models.CharField(_('Description'), max_length=250,
             blank=True, null=True, default='Main Analytic',
             help_text=_('An optional description used only for internal \
 reference.'))
+    is_active = models.BooleanField(_('Is active'), default=True)
+
+
+class VirtualFile(models.Model):
+    url = models.CharField(_('URL'), max_length=250)
+    content = models.TextField(_('File content'))
+    is_active = models.BooleanField(_('Is active'), default=True)
