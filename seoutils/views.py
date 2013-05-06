@@ -10,4 +10,4 @@ from seoutils.models import VirtualFile
 class VirtualFileView(View):
     def get(self, request, path):
         vf = get_object_or_404(VirtualFile, url=path)
-        return HttpResponse(vf.content)
+        return HttpResponse(vf.content, content_type=vf.content_type)

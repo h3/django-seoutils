@@ -5,6 +5,14 @@ import re
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+CONTENT_TYPE_CHOICES = (
+    ('text/plain', _('Plain text')),
+    ('text/xml', _('XML text')),
+    ('text/html', _('HTML text')),
+    ('application/xml', _('XML application')),
+    ('application/xhtml+xml', _('XHTML application')),
+)
+
 
 class Meta(models.Model):
     path_info = models.CharField(_('URL of the page'), max_length=250,
@@ -51,7 +59,8 @@ class VirtualFile(models.Model):
     url = models.CharField(_('URL'), max_length=250, unique=True, db_index=True)
     content = models.TextField(_('File content'))
     is_active = models.BooleanField(_('Is active'), default=True)
-
+    content_type = models.CharField(max_length=100,
+                    choices=CONTENT_TYPE_CHOICES, default='text/plain')
     def save(self, *args, **kwargs):
         if self.url.startswith('/'):
             self.url = self.url[1:]
