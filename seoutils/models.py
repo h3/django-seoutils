@@ -52,5 +52,10 @@ class VirtualFile(models.Model):
     content = models.TextField(_('File content'))
     is_active = models.BooleanField(_('Is active'), default=True)
 
+    def save(self, *args, **kwargs):
+        if self.url.startswith('/'):
+            self.url = self.url[1:]
+        super(VirtualFile, self).save(*args, **kwargs)
+
     def __unicode__(self):
         return self.url

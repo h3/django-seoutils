@@ -57,6 +57,26 @@ specific page like this:
     <meta name="description" content="{{ meta.desc }}">
     <meta name="keywords" content="{{ meta.keywords }}">
 
+Using Virtual Files
+-------------------
+
+Seoutils' Virtual Files is a simple application which makes it easy to put any kind of ASCII file
+on your site on a given URL. 
+
+For example, Google Webmaster Tools ask webdevelopers to put a file named 'google-RANDOM-HASH.html'
+in the webroot. However this doesn't work with Django as URLs are managed internally.
+
+To use Virtual Files, simply add this url to your project `urls.py`:
+
+.. code-block:: python
+
+    (r'', include('seoutils.urls')),
+
+Since it globs any URL, it should be the last URLs. So in essence, a given url doesn't match any of the 
+URLs of your project, it will search for matching Virtual Files URLs and return a 404 if none is found.
+
+Now you can use the admin to add new Virtual Files.
+
 Credits
 =======
 
