@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-06 12:03-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: models.py:10
+msgid "URL of the page"
+msgstr "URL de la page"
+
+#: models.py:11
+msgid ""
+"This can be a URL or a URL name. Ex.: \"/contact/\" or \"website-contact\""
+msgstr ""
+"Vous pouvez utiliser un URL absolu ou un nom d'URL Ex.: \"/contact/\" ou \"website-contact\""
+
+#: models.py:12
+msgid "Page title"
+msgstr "Titre de la page"
+
+#: models.py:13
+msgid "A page title. It will show up in search engine search results."
+msgstr "Un titre de page. Il sera visible dans les résultats des moteurs de recherche."
+
+#: models.py:14
+msgid "Keywords"
+msgstr "Mots clés"
+
+#: models.py:15
+msgid "Keywords separated by spaces."
+msgstr "Mots clés séparés par des espaces"
+
+#: models.py:16
+msgid "Description"
+msgstr "Description"
+
+#: models.py:17
+msgid ""
+"A short description for the page. This will show up in search engine search "
+"results and it should not be longer than 150 characters."
+msgstr ""
+"Une courte description de la page. Cette description sera affiché dans les résultats"
+"des moteurs de recherche et ne doit pas exédé 150 caractères"
+
+#: models.py:18
+msgid "JavaScript"
+msgstr "JavaScript"
+
+#: models.py:19
+msgid ""
+"Extra JavaScript to inject into page, for example campaign tracking code "
+"(script tags must be included)."
+msgstr ""
+"JavaScript additionnel à injecter dasn la page. Par exemple, un code de tracking de campagne "
+"(les script tags doivent être inclus)."
+
+#: models.py:22
+#, python-format
+msgid "SEO meta for %(path)s"
+msgstr "SEO meta pour %(path)s"
