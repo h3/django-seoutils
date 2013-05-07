@@ -77,6 +77,12 @@ URLs of your project, it will search for matching Virtual Files URLs and return 
 
 Now you can use the admin to add new Virtual Files.
 
+If for some reason you cannot put this URL in last position, it is possible to exclude patterns in URL like this:
+
+.. code-block:: python
+
+    (r'^(!media/).*', include('seoutils.urls')),
+
 
 Using Analytics
 ---------------
