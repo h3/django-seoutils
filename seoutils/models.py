@@ -3,7 +3,7 @@
 import re
 
 from django.db import models
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as _
 
 CONTENT_TYPE_CHOICES = (
     ('text/plain', _('Plain text')),
@@ -48,11 +48,12 @@ reference.'))
     is_active = models.BooleanField(_('Is active'), default=True)
 
     def __unicode__(self):
-        regex = re.compile("('UA-.*')")
+        regex = re.compile("""(['"]UA-.*['"])""")
         try:
-            return regex.findall(self.code)[0].replace("'", '')
+            return regex.findall(self.code)[0].replace("'", '').replace('"', '')
         except:
             return _('Unknown analytic code')
+        return _('Unknown analytic code')
 
 
 class VirtualFile(models.Model):
