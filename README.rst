@@ -68,6 +68,20 @@ in the webroot. However this doesn't work with Django as URLs are managed intern
 
 To use Virtual Files, simply add this url to your project `urls.py`:
 
+
+.. code-block:: python
+
+    handler404 = 'seoutils.views.page_not_found'
+
+**Note:** Django will raise a 404 normally if `settings.DEBUG` is set to `True`.
+
+
+The depracated way
+==================
+
+For now you can still use the old way which use a standard URL/view, but be warned that
+this can lead to URLs related headaches..
+
 .. code-block:: python
 
     (r'', include('seoutils.urls')),
@@ -82,6 +96,8 @@ If for some reason you cannot put this URL in last position, it is possible to e
 .. code-block:: python
 
     (r'^(!media/).*', include('seoutils.urls')),
+
+**Note:** Use at your own risks.
 
 
 Using Analytics
