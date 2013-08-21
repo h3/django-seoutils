@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-06 12:03-0400\n"
+"POT-Creation-Date: 2013-08-21 13:42-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,57 +18,104 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
+#: models.py:9
+msgid "Plain text"
+msgstr "Texte simple"
+
 #: models.py:10
+msgid "XML text"
+msgstr "Texte XML"
+
+#: models.py:11
+msgid "HTML text"
+msgstr "Texte HTML"
+
+#: models.py:12
+msgid "XML application"
+msgstr "Application XML"
+
+#: models.py:13
+msgid "XHTML application"
+msgstr "Application XHTML"
+
+#: models.py:18
 msgid "URL of the page"
 msgstr "URL de la page"
 
-#: models.py:11
+#: models.py:19
 msgid ""
 "This can be a URL or a URL name. Ex.: \"/contact/\" or \"website-contact\""
 msgstr ""
-"Vous pouvez utiliser un URL absolu ou un nom d'URL Ex.: \"/contact/\" ou \"website-contact\""
+"Vous pouvez utiliser un URL absolu ou un nom d'URL Ex.: \"/contact/\" ou "
+"\"website-contact\""
 
-#: models.py:12
+#: models.py:22
 msgid "Page title"
 msgstr "Titre de la page"
 
-#: models.py:13
+#: models.py:23
 msgid "A page title. It will show up in search engine search results."
-msgstr "Un titre de page. Il sera visible dans les résultats des moteurs de recherche."
+msgstr ""
+"Un titre de page. Il sera visible dans les résultats des moteurs de "
+"recherche."
 
-#: models.py:14
+#: models.py:26
 msgid "Keywords"
 msgstr "Mots clés"
 
-#: models.py:15
+#: models.py:27
 msgid "Keywords separated by spaces."
 msgstr "Mots clés séparés par des espaces"
 
-#: models.py:16
+#: models.py:29 models.py:44
 msgid "Description"
 msgstr "Description"
 
-#: models.py:17
+#: models.py:30
 msgid ""
 "A short description for the page. This will show up in search engine search "
 "results and it should not be longer than 150 characters."
 msgstr ""
-"Une courte description de la page. Cette description sera affiché dans les résultats"
-"des moteurs de recherche et ne doit pas exédé 150 caractères"
+"Une courte description de la page. Cette description sera affiché dans les "
+"résultatsdes moteurs de recherche et ne doit pas exédé 150 caractères"
 
-#: models.py:18
+#: models.py:34
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: models.py:19
+#: models.py:35
 msgid ""
 "Extra JavaScript to inject into page, for example campaign tracking code "
 "(script tags must be included)."
 msgstr ""
-"JavaScript additionnel à injecter dasn la page. Par exemple, un code de tracking de campagne "
-"(les script tags doivent être inclus)."
+"JavaScript additionnel à injecter dasn la page. Par exemple, un code de "
+"tracking de campagne (les script tags doivent être inclus)."
 
-#: models.py:22
+#: models.py:39
 #, python-format
 msgid "SEO meta for %(path)s"
 msgstr "SEO meta pour %(path)s"
+
+#: models.py:43
+msgid "Code JavaScript"
+msgstr "Code JavaScript"
+
+#: models.py:46
+msgid "An optional description used only for internal reference."
+msgstr "Une description optionelle utilisé seulement pour référence interne."
+
+#: models.py:48 models.py:62
+msgid "Is active"
+msgstr "Est actif"
+
+#: models.py:55 models.py:56
+msgid "Unknown analytic code"
+msgstr "Code analytics invalide"
+
+#: models.py:60
+msgid "URL"
+msgstr "URL"
+
+#: models.py:61
+msgid "File content"
+msgstr "Contenu du fichier"
